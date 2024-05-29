@@ -1,0 +1,13 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/ApiCRUD/.vs
+/ApiCRUD/ApiCRUD/bin
+/ApiCRUD/ApiCRUD/obj
+/ApiCRUD/Application/bin
+/ApiCRUD/Application/obj
+/ApiCRUD/Core/bin
+/ApiCRUD/Core/obj
+/ApiCRUD/Infrastructure/bin
+/ApiCRUD/Infrastructure/obj
