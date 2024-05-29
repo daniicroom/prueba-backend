@@ -29,12 +29,12 @@ string dbConnectionString = configuration.GetConnectionString("DefaultConnection
 
 builder.Services.AddDbContext<AppDbContext>(options =>
             options.UseMySql(dbConnectionString, ServerVersion.AutoDetect(dbConnectionString)));
-/*
+
 //configurate logger with serilog and appsettings
 Log.Logger = new LoggerConfiguration()
     .ReadFrom.Configuration(configuration) 
     .WriteTo.MySQL(connectionString: dbConnectionString)
-    .CreateLogger();*/
+    .CreateLogger();
 
 builder.Services.AddControllers();
 
