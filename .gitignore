@@ -11,3 +11,5 @@
 /ApiCRUD/Core/obj
 /ApiCRUD/Infrastructure/bin
 /ApiCRUD/Infrastructure/obj
+/ApiCRUD/Common/bin
+/ApiCRUD/Common/obj

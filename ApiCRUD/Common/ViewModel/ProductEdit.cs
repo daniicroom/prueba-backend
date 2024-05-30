@@ -5,13 +5,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Core.Model
+namespace Common.ViewModel
 {
-    public class Product
+    public class ProductEdit
     {
-        public int Id { get; set; }
         public string Name { get; set; }
-        [Column(TypeName = "decimal(63,4)")]
         public decimal Price { get; set; }
     }
 }

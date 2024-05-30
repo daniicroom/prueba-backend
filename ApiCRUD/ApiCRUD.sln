@@ -3,15 +3,17 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.8.34525.116
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApiCRUD", "ApiCRUD\ApiCRUD.csproj", "{1A170193-EEC8-4F73-B20E-416895E43279}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ApiCRUD", "ApiCRUD\ApiCRUD.csproj", "{1A170193-EEC8-4F73-B20E-416895E43279}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Libraries", "Libraries", "{79447DA5-53D8-4AA0-9E62-96F20FF51330}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Application", "Application\Application.csproj", "{86BE5CAD-037C-4703-9D68-E3FFC617E3E8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Application", "Application\Application.csproj", "{86BE5CAD-037C-4703-9D68-E3FFC617E3E8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infrastructure", "Infrastructure\Infrastructure.csproj", "{16D23F91-916F-4089-B93A-1D582D8C7E5C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infrastructure", "Infrastructure\Infrastructure.csproj", "{16D23F91-916F-4089-B93A-1D582D8C7E5C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core", "Core\Core.csproj", "{BA7ACBB1-5AB5-4975-A4E5-3F347EC075F6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Core", "Core\Core.csproj", "{BA7ACBB1-5AB5-4975-A4E5-3F347EC075F6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common", "Common\Common.csproj", "{A1E66B75-9F6E-4F7A-A39D-1987AE033F16}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -35,6 +37,10 @@ Global
 		{BA7ACBB1-5AB5-4975-A4E5-3F347EC075F6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BA7ACBB1-5AB5-4975-A4E5-3F347EC075F6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BA7ACBB1-5AB5-4975-A4E5-3F347EC075F6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A1E66B75-9F6E-4F7A-A39D-1987AE033F16}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A1E66B75-9F6E-4F7A-A39D-1987AE033F16}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A1E66B75-9F6E-4F7A-A39D-1987AE033F16}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A1E66B75-9F6E-4F7A-A39D-1987AE033F16}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -43,6 +49,7 @@ Global
 		{86BE5CAD-037C-4703-9D68-E3FFC617E3E8} = {79447DA5-53D8-4AA0-9E62-96F20FF51330}
 		{16D23F91-916F-4089-B93A-1D582D8C7E5C} = {79447DA5-53D8-4AA0-9E62-96F20FF51330}
 		{BA7ACBB1-5AB5-4975-A4E5-3F347EC075F6} = {79447DA5-53D8-4AA0-9E62-96F20FF51330}
+		{A1E66B75-9F6E-4F7A-A39D-1987AE033F16} = {79447DA5-53D8-4AA0-9E62-96F20FF51330}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {10CE7ED4-EC66-47BD-8AE0-10E3E636A3B9}

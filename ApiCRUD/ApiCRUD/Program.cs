@@ -1,21 +1,13 @@
 using Application.Interface;
 using Application.Management;
-using Core.Interface;
+using Core.Interface.Repositories;
+using Infrastructure;
 using Infrastructure.Data;
 using Infrastructure.Repositories;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Serilog;
-
-var builder = WebApplication.CreateBuilder(args);
-
-// Configuración de dependencias
-//Repositories
-builder.Services.AddScoped<IProductRepository, ProductRepository>();
-
-
-//Management
-builder.Services.AddScoped<IManagementProduct, ManagementProduct>();
 
 // Add services to the container.
 IConfigurationRoot configuration = new ConfigurationBuilder()
@@ -27,14 +19,35 @@ IConfigurationRoot configuration = new ConfigurationBuilder()
 
 string dbConnectionString = configuration.GetConnectionString("DefaultConnection");
 
+var builder = WebApplication.CreateBuilder(args);
+
 builder.Services.AddDbContext<AppDbContext>(options =>
             options.UseMySql(dbConnectionString, ServerVersion.AutoDetect(dbConnectionString)));
 
 //configurate logger with serilog and appsettings
 Log.Logger = new LoggerConfiguration()
-    .ReadFrom.Configuration(configuration) 
+    .ReadFrom.Configuration(configuration)
     .WriteTo.MySQL(connectionString: dbConnectionString)
     .CreateLogger();
+
+Log.Information($"Api Starting in {Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT")}");
+
+builder.Services.AddLogging(loggingBuilder =>
+{
+    loggingBuilder.AddSerilog();
+});
+
+// Configuración de dependencias
+//Repositories
+builder.Services.AddScoped<IProductRepository, ProductRepository>();
+
+
+//Management
+builder.Services.AddScoped<IManagementProduct, ManagementProduct>();
+
+builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
+
+
 
 builder.Services.AddControllers();
 
@@ -42,6 +55,10 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 
 builder.Services.AddSwaggerGen();
+builder.Services.AddAutoMapper(typeof(Program));
+
+
+//builder.Services.AddAuth(jwtSettings);
 
 var app = builder.Build();
 

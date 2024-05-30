@@ -1,53 +1,51 @@
-﻿using Core.Interface;
+﻿using Core.Interface.Repositories;
 using Core.Model;
 using Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace Infrastructure.Repositories
 {
-    public class ProductRepository : IProductRepository
+    public class ProductRepository : GenericRepository<Product>, IProductRepository
     {
         private readonly AppDbContext _context;
 
-        public ProductRepository(AppDbContext context)
+        public ProductRepository(AppDbContext context) : base(context)
         {
             _context = context;
         }
 
         public async Task<IEnumerable<Product>> GetAllAsync()
         {
-            return await _context.Products.ToListAsync();
+            return  FindAll();
         }
 
         public async Task<Product> GetByIdAsync(int id)
         {
-            return await _context.Products.FindAsync(id);
+            return await FindByCondition(p => p.Id.Equals(id)).FirstOrDefaultAsync();
         }
 
         public async Task AddAsync(Product product)
         {
-            _context.Products.Add(product);
-            await _context.SaveChangesAsync();
+            await Create(product);
         }
 
         public async Task UpdateAsync(Product product)
         {
-            _context.Entry(product).State = EntityState.Modified;
-            await _context.SaveChangesAsync();
+             Update(product);
         }
 
         public async Task DeleteAsync(int id)
         {
-            var product = await _context.Products.FindAsync(id);
+            Product? product = await _context.Products.FindAsync(id);
             if (product != null)
             {
-                _context.Products.Remove(product);
-                await _context.SaveChangesAsync();
+                Delete(product);
             }
         }
     }
